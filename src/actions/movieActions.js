@@ -19,6 +19,14 @@ export function getMovieDetail(id){
   }
 }
 
+export function getVideo(id){
+  const request = axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=en-US`);
+  return {
+    type: type.RETRIEVE_VIDEO,
+    payload: request
+  }
+}
+
 export function getGenreData(){
   const request = axios.get(``);
   return {

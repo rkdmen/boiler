@@ -15,7 +15,7 @@ class NowPlayingContainer extends React.Component {
         this.nextPage = this.nextPage.bind(this);
     }
     componentDidMount() {
-      // this.props.getNowPlayingList(1);
+      this.props.getNowPlayingList(1);
     }
     componentWillReceiveProps(nextProps) {
       console.log(nextProps, ' next prop updated' );
@@ -25,7 +25,7 @@ class NowPlayingContainer extends React.Component {
     nextPage(){
       this.setState({page:this.state.page+1})
       this.props.getNowPlayingList(this.state.page+1);
-      console.log(this.state, 'this state')
+      // console.log(this.state, 'this state')
     }
 
 
@@ -54,8 +54,7 @@ class NowPlayingContainer extends React.Component {
             })
           }
           <div className="emptySpace"></div>
-        <button className='btn btn-default btn-lg next' onClick={this.nextPage}>Next</button>
-        <a className="btn btn-default" href="#">sfdsfs</a>
+        <Button className='btn btn-default btn-lg next' onClick={this.nextPage}>Next</Button>
         </div>
         )
     }

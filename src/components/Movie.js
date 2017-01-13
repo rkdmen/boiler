@@ -1,5 +1,5 @@
 import React from 'react';
-import NowPlayingContainer from '../containers/NowPlayingContainer'
+import NowPlayingContainer from '../containers/NowPlayingContainer';
 
 class Movie extends React.Component {
   render(){

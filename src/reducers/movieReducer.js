@@ -14,7 +14,14 @@ export function movieReducer(state = {}, action) {
           movieData:action.payload.data
         });
 
+      case type.RETRIEVE_VIDEO:
+      console.log('retrieve video')
+        return Object.assign({}, state, {
+          videoData:action.payload.data.results[0]
+        });
+
       default:
           return state;
     }
+
 }

@@ -7,11 +7,9 @@ class Main extends React.Component {
     return (
           <Grid className="main-container">
             <Row>
-
               <Col xs={12} md={12}>
                   <Movie />
               </Col>
-
             </Row>
           </Grid>
       )

@@ -1,12 +1,16 @@
-.movieInfoDetailContainer{
+.movieInfoContainer{
+  padding-top:60px;
+
   img {
     width:250px;
+    text-align: center;
   }
 
   .movieTitle {
     text-decoration:none;
-    color:blue;
+    color:black;
     font-size:24px;
-    text-align:center;
+    text-align:left;
   }
+
 }

@@ -11,10 +11,14 @@ class NowPlayingDetailContainer extends React.Component {
         this.hover = this.hover.bind(this);
         this.unhover = this.unhover.bind(this);
     }
+
     componentDidMount() {
 
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({imgSrc: nextProps.poster})
+    }
 
 
     hover() {
