@@ -10,7 +10,7 @@
 
 .singleMovie {
   margin: 0 auto;
-  border: thin solid blue;
+  // border: thin solid blue;
   display:inline-block;
   float:left;
   width:185px;
@@ -20,11 +20,17 @@
         width:150px;
       }
     }
-
     &:hover{
       opacity:.8 !important;
       cursor: pointer;
     }
+}
+
+.btnGroup{
+  margin: 0 auto;
+  top:50%;
+  left:50%;
+  text-align: center;
 }
 
 .poster {

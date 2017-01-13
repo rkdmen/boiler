@@ -10,9 +10,11 @@ class NowPlayingContainer extends React.Component {
         super(props);
         this.state = {
           nowPlayingList:[],
-          page:1
+          page:1,
+          disableBtn:true
         };
         this.nextPage = this.nextPage.bind(this);
+        this.prevPage = this.prevPage.bind(this);
     }
     componentDidMount() {
       this.props.getNowPlayingList(1);
@@ -25,9 +27,24 @@ class NowPlayingContainer extends React.Component {
     nextPage(){
       this.setState({page:this.state.page+1})
       this.props.getNowPlayingList(this.state.page+1);
-      // console.log(this.state, 'this state')
+      this.setState({disableBtn:false})
     }
 
+    prevPage(){
+      if(this.state.page === 1){
+        this.setState({disableBtn:true})
+        return;
+      } else {
+        this.setState({page:this.state.page-1})
+        this.props.getNowPlayingList(this.state.page-1)
+        .then(()=>{
+          if(this.state.page === 1){
+          console.log('disabled BTN!!')
+          this.setState({disableBtn:true})
+          }
+        })
+      }
+    }
 
     render() {
       console.log(this.state, ' this state, nowPlaying')
@@ -54,7 +71,11 @@ class NowPlayingContainer extends React.Component {
             })
           }
           <div className="emptySpace"></div>
-        <Button className='btn btn-default btn-lg next' onClick={this.nextPage}>Next</Button>
+          <div className="btnGroup">
+            <Button className='btn btn-default btn-lg next' disabled={this.state.disableBtn} onClick={this.prevPage}>Prev</Button>
+            <Button className='btn btn-default btn-lg next' onClick={this.nextPage}>Next</Button>
+          </div>
+
         </div>
         )
     }
