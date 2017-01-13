@@ -1,2 +1,10 @@
 // This is the top-level scss file. Import all other files in here.
-@import 'home';
+@import './partials/header';
+@import './partials/home';
+@import './partials/nowPlaying';
+
+
+// Modules
+@import './modules/normalize';
+@import './modules/variables';
+
