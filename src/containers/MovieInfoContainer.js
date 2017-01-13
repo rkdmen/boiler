@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { Button } from 'react-bootstrap';
 import { getMovieDetail } from '../actions/movieActions';
 
@@ -9,7 +9,6 @@ class MovieInfoContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.goBack = this.goBack.bind(this);
 
     }
 
@@ -32,7 +31,7 @@ class MovieInfoContainer extends React.Component {
             {!this.props.movieData ? 'Loading...':
             <div className="movieInfoDetailContainer">
               <p className="movieTitle">{this.props.movieData.original_title}</p>
-              <img src={"https://image.tmdb.org/t/p/w185_and_h278_bestv2"+this.props.movieData.poster_path} alt="poster"/>
+              <img src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+this.props.movieData.poster_path} alt="poster"/>
 
             </div>
           }
@@ -40,6 +39,12 @@ class MovieInfoContainer extends React.Component {
         )
     }
 
+}
+
+MovieInfoContainer.propTypes = {
+    getMovieDetail: React.PropTypes.func,
+    movieData:React.PropTypes.object,
+    params:React.PropTypes.string
 }
 
 function mapStateToProps(state) {

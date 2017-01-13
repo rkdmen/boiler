@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
+import { Button } from 'react-bootstrap';
 import { getNowPlayingList } from '../actions/movieActions';
 import NowPlayingDetailContainer from './NowPlayingDetailContainer';
 
@@ -15,7 +15,7 @@ class NowPlayingContainer extends React.Component {
         this.nextPage = this.nextPage.bind(this);
     }
     componentDidMount() {
-      this.props.getNowPlayingList(1);
+      // this.props.getNowPlayingList(1);
     }
     componentWillReceiveProps(nextProps) {
       console.log(nextProps, ' next prop updated' );
@@ -60,6 +60,10 @@ class NowPlayingContainer extends React.Component {
         )
     }
 
+}
+
+NowPlayingContainer.propTypes = {
+    getNowPlayingList: React.PropTypes.func
 }
 
 function mapStateToProps(state) {

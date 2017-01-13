@@ -15,6 +15,8 @@ class NowPlayingDetailContainer extends React.Component {
 
     }
 
+
+
     hover() {
         if(!this.props.backPoster) return;
         //if there is no backPoster availaable, it will not do anything.
@@ -29,7 +31,7 @@ class NowPlayingDetailContainer extends React.Component {
       return (
         <div className="singleMovie">
             <Link to={`/info/${this.props.id}`}>
-            <img className="poster" src={"https://image.tmdb.org/t/p/w185_and_h278_bestv2"+this.state.imgSrc} alt="poster"  onMouseOver={this.hover} onMouseOut={this.unhover} />
+            <img className="poster" src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+this.state.imgSrc} alt="poster"  onMouseOver={this.hover} onMouseOut={this.unhover} />
             <p className="movieTitle">{//this.props.title
             }
             </p>
@@ -39,5 +41,10 @@ class NowPlayingDetailContainer extends React.Component {
     }
 }
 
+NowPlayingDetailContainer.propTypes = {
+    poster: React.PropTypes.string,
+    backPoster:React.PropTypes.string,
+    id:React.PropTypes.number
+}
 
 export default connect(null, null)(NowPlayingDetailContainer);
