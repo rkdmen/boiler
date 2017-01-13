@@ -4,6 +4,14 @@
   img {
     width:250px;
     text-align: center;
+    @media #{$mq-xs, $mq-sm}{
+      display:inline-block;
+      // float:left;
+      // width:auto;
+      // height:130px;
+      display:none;
+      text-align:center;
+    }
   }
 
   .movieTitle {
@@ -13,4 +21,23 @@
     text-align:left;
   }
 
+  .bold {
+    font-weight:600;
+    text-size:15px;
+  }
+    li {
+      list-style:none;
+      display:inline-block;
+    }
+  ul {
+    display:inline-block;
+    li {
+      list-style:none;
+      display:inline-block;
+    }
+  }
+  .reviewAuthor {
+    font-weight:500;
+    font-style:italic;
+  }
 }

@@ -20,6 +20,12 @@ export function movieReducer(state = {}, action) {
           videoData:action.payload.data.results[0]
         });
 
+      case type.RETRIEVE_REVIEW:
+      console.log('retrieve review')
+        return Object.assign({}, state, {
+          reviewData:action.payload.data.results
+        });
+
       default:
           return state;
     }

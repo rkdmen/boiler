@@ -27,6 +27,16 @@ export function getVideo(id){
   }
 }
 
+
+export function getReview(id){
+  console.log('get review', id)
+  const request = axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}&language=en-US&page=1`);
+  return {
+    type: type.RETRIEVE_REVIEW,
+    payload: request
+  }
+}
+
 export function getGenreData(){
   const request = axios.get(``);
   return {
