@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/noahlotzer/react-simple-boilerplate.git"
+    "url": "https://github.com/rkdmen/now-playing.git"
   },
   "keywords": [
     "react",
@@ -22,9 +22,9 @@
   "author": "John KM Jung <min85da@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/noahlotzer/react-simple-boilerplate/issues"
+    "url": "https://github.com/rkdmen/now-playing/issues"
   },
-  "homepage": "https://github.com/noahlotzer/react-simple-boilerplate",
+  "homepage": "https://github.com/rkdmen/now-playing",
   "devDependencies": {
     "babel-core": "6.10.4",
     "babel-loader": "6.0.1",
