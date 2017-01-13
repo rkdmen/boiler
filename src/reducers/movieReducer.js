@@ -8,6 +8,12 @@ export function movieReducer(state = {}, action) {
         return Object.assign({}, state, {
           movieList:action.payload.data.results
         });
+
+      case type.RETRIEVE_MOVIE_DETAIL:
+        return Object.assign({}, state, {
+          movieData:action.payload.data
+        });
+
       default:
           return state;
     }

@@ -9,3 +9,19 @@ export function getNowPlayingList(){
     payload: request
   }
 }
+
+export function getMovieDetail(id){
+  const request = axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US&page=1`);
+  return {
+    type: type.RETRIEVE_MOVIE_DETAIL,
+    payload: request
+  }
+}
+
+export function getGenreData(){
+  const request = axios.get(``);
+  return {
+    type: type.RETRIEVE_GENRE,
+    payload: request
+  }
+}

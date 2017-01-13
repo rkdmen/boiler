@@ -14,6 +14,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 import App from './App.jsx';
 import rootReducer from './reducers/index';
+import MovieInfoContainer from './containers/MovieInfoContainer';
 
 
 const Store = createStore(
@@ -30,9 +31,8 @@ const history = syncHistoryWithStore(browserHistory, Store)
 ReactDOM.render(
     <Provider store={Store}>
         <Router history={history}>
-          <Route path="/" component={App}>
-
-          </Route>
+          <Route path="/" component={App}/>
+            <Route path="/info/:id" component={MovieInfoContainer}/>
         </Router>
     </Provider>,
     document.getElementById('react-root')

@@ -1,11 +1,35 @@
 .nowPlayingContainer{
   margin: 0 auto;
-  padding: 40px;
+  padding: 10px;
   width: 80%;
   color: #333;
-  background: #419be0;
 }
 
 .singleMovie {
-  // float:left;
+  float:left;
+  width:185px;
+
+  .movieTitle {
+    text-decoration:none;
+    color:black;
+    font-size:15px;
+    text-align:center;
+      z-index: 100;
+    top:10px;
+    left:40px;
+
+  }
+    &:hover{
+      opacity:.8 !important;
+      cursor: pointer;
+    }
 }
+
+.poster {
+
+}
+
+.backPoster {
+  display:none;
+}
+

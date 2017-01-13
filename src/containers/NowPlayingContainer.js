@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getNowPlayingList } from '../actions/movieActions';
-// import MovieInfoContainer from './MovieInfoContainer';
 import NowPlayingDetailContainer from './NowPlayingDetailContainer';
 
 class NowPlayingContainer extends React.Component {
@@ -37,6 +36,7 @@ class NowPlayingContainer extends React.Component {
                   title={movie.original_title}
                   overview={movie.overview}
                   poster={movie.poster_path}
+                  backPoster={movie.backdrop_path}
                 />
               )
             })
