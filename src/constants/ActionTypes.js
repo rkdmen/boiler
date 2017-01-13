@@ -1,0 +1,3 @@
+//Actions const
+
+export const RETRIEVE_NOWPLAYING_LIST = 'RETRIEVE_NOWPLAYING_LIST';
