@@ -14,12 +14,13 @@ class NowPlayingDetailContainer extends React.Component {
     componentDidMount() {
 
     }
-    componentWillReceiveProps(nextProps) {
-      // console.log(nextProps, ' next prop')
-    }
+
     hover() {
+        if(!this.props.backPoster) return;
+        //if there is no backPoster availaable, it will not do anything.
         this.setState({imgSrc: this.props.backPoster})
     }
+
     unhover() {
         this.setState({imgSrc: this.props.poster})
     }

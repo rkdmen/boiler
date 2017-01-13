@@ -16,9 +16,7 @@ class MovieInfoContainer extends React.Component {
     componentDidMount() {
       this.props.getMovieDetail(this.props.params.id)
     }
-    componentWillReceiveProps(nextProps) {
-      // console.log(nextProps, ' next prop')
-    }
+
 
     goBack() {
      browserHistory.goBack();
@@ -33,9 +31,10 @@ class MovieInfoContainer extends React.Component {
 
             {!this.props.movieData ? 'Loading...':
             <div className="movieInfoDetailContainer">
-            <img src={"https://image.tmdb.org/t/p/w185_and_h278_bestv2"+this.props.movieData.poster_path} alt="poster"/>
-            <img src={"https://image.tmdb.org/t/p/w185_and_h278_bestv2"+this.props.movieData.backdrop_path} alt="poster"/>
-          </div>
+              <p className="movieTitle">{this.props.movieData.original_title}</p>
+              <img src={"https://image.tmdb.org/t/p/w185_and_h278_bestv2"+this.props.movieData.poster_path} alt="poster"/>
+
+            </div>
           }
         </div>
         )

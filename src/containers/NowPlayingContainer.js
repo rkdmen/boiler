@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import { getNowPlayingList } from '../actions/movieActions';
 import NowPlayingDetailContainer from './NowPlayingDetailContainer';
@@ -8,28 +9,39 @@ class NowPlayingContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          nowPlayingList:[]
+          nowPlayingList:[],
+          page:1
         };
+        this.nextPage = this.nextPage.bind(this);
     }
     componentDidMount() {
-      this.props.getNowPlayingList();
+      this.props.getNowPlayingList(1);
     }
     componentWillReceiveProps(nextProps) {
-      console.log(nextProps, ' next prop');
+      console.log(nextProps, ' next prop updated' );
       this.setState({nowPlayingList:nextProps.nowPlayingList})
-
     }
 
-    render() {
+    nextPage(){
+      this.setState({page:this.state.page+1})
+      this.props.getNowPlayingList(this.state.page+1);
+      console.log(this.state, 'this state')
+    }
 
+
+    render() {
       console.log(this.state, ' this state, nowPlaying')
       return (
         <div className="nowPlayingContainer">
 
-            {!this.props.nowPlayingList ? 'Loading...':
-            this.props.nowPlayingList.map((movie, i)=>{
-              return (
-
+            {!this.state.nowPlayingList ? 'Loading...':
+            this.state.nowPlayingList.map((movie, i)=>{
+              if(movie.poster_path === null){
+                /*For beauty purpose of my app, if poster data is not available
+                I decided not to include onto my app.
+                  */
+                return ;
+              } else return (
                 <NowPlayingDetailContainer
                   key={i}
                   id={movie.id}
@@ -41,7 +53,9 @@ class NowPlayingContainer extends React.Component {
               )
             })
           }
-
+          <div className="emptySpace"></div>
+        <button className='btn btn-default btn-lg next' onClick={this.nextPage}>Next</button>
+        <a className="btn btn-default" href="#">sfdsfs</a>
         </div>
         )
     }
