@@ -3,7 +3,6 @@ import * as type from '../constants/ActionTypes';
 const apiKey = '306bd1f9dda87b11475c98f9d47e3862';
 
 export function getNowPlayingList(page){
-  // console.log(page, 'page num')
   const request = axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=${page}`);
   return {
     type: type.RETRIEVE_NOWPLAYING_LIST,
@@ -26,7 +25,6 @@ export function getVideo(id){
     payload: request
   }
 }
-
 
 export function getReview(id){
   const request = axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}&language=en-US&page=1`);

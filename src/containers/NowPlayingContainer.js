@@ -16,18 +16,20 @@ class NowPlayingContainer extends React.Component {
         };
         this.nextPage = this.nextPage.bind(this);
         this.prevPage = this.prevPage.bind(this);
-        // this.handleChange = this.handleChange.bind(this);
     }
+
     componentDidMount() {
+      //On main page, it will load with first page section of NowPlaying and get list of genre
       this.props.getNowPlayingList(1);
       this.props.getGenreData();
     }
+
     componentWillReceiveProps(nextProps) {
-      // console.log(nextProps, 'NextProps~')
       this.setState({nowPlayingList:nextProps.nowPlayingList, genres:nextProps.genreData})
     }
 
     nextPage(){
+      //Search next page for NowPlaying
       window.scrollTo(0, 0);
       this.setState({page:this.state.page+1});
       this.props.getNowPlayingList(this.state.page+1);
@@ -35,6 +37,7 @@ class NowPlayingContainer extends React.Component {
     }
 
     prevPage(){
+      //Search prev page for NowPlaying
       window.scrollTo(0, 0);
       if(this.state.page === 1){
         this.setState({disableBtn:true})
@@ -49,11 +52,12 @@ class NowPlayingContainer extends React.Component {
         })
       }
     }
+
     handleChange(val){
+      //Shows first page of by genre
       this.props.searchByGenre(val)
       .then(()=>{
         this.setState({nowPlayingList:this.props.searchByGenreResult})
-
       })
     }
 
@@ -64,7 +68,7 @@ class NowPlayingContainer extends React.Component {
             this.state.nowPlayingList.map((movie, i)=>{
               if(movie.poster_path === null){
                 /*For beauty purpose of my app, if poster data is not available
-                I decided not to include onto my app.
+                I decided omit from my app.
                   */
                 return ;
               } else return (
@@ -110,7 +114,6 @@ NowPlayingContainer.propTypes = {
 }
 
 function mapStateToProps(state) {
-  // console.log(state, ' state map ~~~')
     return {
       nowPlayingList: state.reducer.movie.movieList,
       genreData: state.reducer.movie.genreData,
