@@ -8,11 +8,35 @@
   }
 
   .singleMovie {
+    position:relative;
     margin: 0 auto;
-    // border: thin solid blue;
     display:inline-block;
     float:left;
     width:185px;
+
+    .overlay {
+      // display:none;
+      background: none repeat fixed center #F3EEFF;
+      width:100%;
+      height:auto;
+      opacity: 0;
+      text-align:center;
+      top:0;
+      margin:0 auto;
+      position: absolute;
+    }
+
+    img:hover ~ .overlay {
+      padding:5px;
+      color:black;
+      font-size: 16px;
+      font-weight: 600;
+      transition:opacity 1s ease;
+      opacity: .6 !important;
+      filter: alpha(opacity=60); /* For IE8 and earlier */
+
+    }
+
     @media #{$mq-xs, $mq-sm}{
         width:150px;
         img {
@@ -37,13 +61,15 @@
      transition: all .7s ease-in-out;
 
     &:hover{
-      // border-radius:512px !important;
+
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
-      // transition: all 0.3s ease-in-out 0s;
+
     }
   }
 
 }
+
+

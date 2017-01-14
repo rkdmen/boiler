@@ -32,9 +32,8 @@ class NowPlayingDetailContainer extends React.Component {
         <div className="singleMovie">
             <Link to={`/info/${this.props.id}`}>
             <img className="posterImg" src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+this.state.imgSrc} alt="poster"  onMouseOver={this.hover} onMouseOut={this.unhover} />
-            <p className="movieTitle">{//this.props.title
-            }
-            </p>
+
+            <p className="overlay movieTitle">{this.props.title} </p>
             </Link>
         </div>
         )
@@ -44,7 +43,9 @@ class NowPlayingDetailContainer extends React.Component {
 NowPlayingDetailContainer.propTypes = {
     poster: React.PropTypes.string,
     backPoster:React.PropTypes.string,
-    id:React.PropTypes.number
+    id:React.PropTypes.number,
+    title: React.PropTypes.string
+
 }
 
 export default connect(null, null)(NowPlayingDetailContainer);

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Button,  DropdownButton, MenuItem  } from 'react-bootstrap';
 import { getNowPlayingList, getGenreData, searchByGenre } from '../actions/movieActions';
 import NowPlayingDetailContainer from './NowPlayingDetailContainer';
+import _ from 'lodash';
 
 class NowPlayingContainer extends React.Component {
     constructor(props) {
@@ -31,10 +32,14 @@ class NowPlayingContainer extends React.Component {
     nextPage(){
       //Search next page for NowPlaying
       window.scrollTo(0, 0);
-      this.setState({page:this.state.page+1});
-      this.props.getNowPlayingList(this.state.page+1);
-      this.setState({disableBtn:false});
+      setTimeout(()=>{
+        //after button is called using setTimeout 400ms to prevent rendering immediately.
+        this.setState({page:this.state.page+1});
+        this.setState({disableBtn:false});
+          this.props.getNowPlayingList(this.state.page+1)
+      }, 400);
     }
+
 
     prevPage(){
       //Search prev page for NowPlaying
@@ -43,13 +48,13 @@ class NowPlayingContainer extends React.Component {
         this.setState({disableBtn:true})
         return;
       } else {
-        this.setState({page:this.state.page-1})
-        this.props.getNowPlayingList(this.state.page-1)
-        .then(()=>{
-          if(this.state.page === 1){
-          this.setState({disableBtn:true})
-          }
-        })
+          this.setState({page:this.state.page-1})
+          this.props.getNowPlayingList(this.state.page-1)
+          .then(()=>{
+            if(this.state.page === 1){
+            this.setState({disableBtn:true})
+            }
+          })
       }
     }
 
