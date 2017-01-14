@@ -31,11 +31,11 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.js?$/,
+      { test: /\.jsx?$/,
         loader: 'babel',
         exclude: /node_modules/ },
       { test: /\.scss?$/,
-        loader: 'style!css!sass',
+        loader: 'application!css!sass',
         include: path.join(__dirname, 'src', 'styles') },
       { test: /\.png$/,
         loader: 'file' },
