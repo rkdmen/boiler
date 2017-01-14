@@ -30,7 +30,6 @@ const history = syncHistoryWithStore(browserHistory, Store);
 
 
 
-
 ReactDOM.render(
     <Provider store={Store}>
         <Router history={history}>

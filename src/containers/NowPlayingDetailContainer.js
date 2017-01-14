@@ -12,10 +12,6 @@ class NowPlayingDetailContainer extends React.Component {
         this.unhover = this.unhover.bind(this);
     }
 
-    componentDidMount() {
-
-    }
-
     componentWillReceiveProps(nextProps) {
         this.setState({imgSrc: nextProps.poster})
     }
@@ -35,7 +31,7 @@ class NowPlayingDetailContainer extends React.Component {
       return (
         <div className="singleMovie">
             <Link to={`/info/${this.props.id}`}>
-            <img className="poster" src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+this.state.imgSrc} alt="poster"  onMouseOver={this.hover} onMouseOut={this.unhover} />
+            <img className="posterImg" src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+this.state.imgSrc} alt="poster"  onMouseOver={this.hover} onMouseOut={this.unhover} />
             <p className="movieTitle">{//this.props.title
             }
             </p>

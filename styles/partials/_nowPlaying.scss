@@ -6,34 +6,44 @@
   @media #{$mq-xs, $mq-sm}{
     padding-left:5%;
   }
-}
 
-.singleMovie {
-  margin: 0 auto;
-  // border: thin solid blue;
-  display:inline-block;
-  float:left;
-  width:185px;
-  @media #{$mq-xs, $mq-sm}{
-      width:150px;
-      img {
+  .singleMovie {
+    margin: 0 auto;
+    // border: thin solid blue;
+    display:inline-block;
+    float:left;
+    width:185px;
+    @media #{$mq-xs, $mq-sm}{
         width:150px;
+        img {
+          width:150px;
+        }
       }
-    }
     &:hover{
       opacity:.8 !important;
-      cursor: pointer;
+      filter: alpha(opacity=80); /* For IE8 and earlier */
+      cursor: pointer !important;
     }
+  }
+
+  .btnGroup{
+    margin: 0 auto;
+    top:50%;
+    left:50%;
+    text-align: center;
+  }
+
+  .posterImg {
+     transition: all .7s ease-in-out;
+
+    &:hover{
+      // border-radius:512px !important;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+      // transition: all 0.3s ease-in-out 0s;
+    }
+  }
+
 }
-
-.btnGroup{
-  margin: 0 auto;
-  top:50%;
-  left:50%;
-  text-align: center;
-}
-
-.poster {
-
-}
-

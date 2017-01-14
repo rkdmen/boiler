@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
 import { Button,  DropdownButton, MenuItem  } from 'react-bootstrap';
 import { getNowPlayingList, getGenreData, searchByGenre } from '../actions/movieActions';
 import NowPlayingDetailContainer from './NowPlayingDetailContainer';
