@@ -46,6 +46,17 @@
     overflow:auto;
   }
 
+  .forMobile {
+    @media #{$mq-m, $mq-lg, $mq-xlg}{
+      display:none;
+    }
+  }
+
+  .forDesktop {
+    @media #{$mq-xs, $mq-sm}{
+      display:none;
+    }
+  }
 }
 
 

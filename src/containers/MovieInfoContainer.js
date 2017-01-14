@@ -11,7 +11,6 @@ class MovieInfoContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-
     }
 
     componentDidMount() {
@@ -69,10 +68,6 @@ class MovieInfoContainer extends React.Component {
             )
         }
       }
-      console.log(this.props.reviewData, ' REVIEW DATA')
-
-      // console.log(this.props.movieData, ' MOVIE DATA')
-      console.log(this.props, ' prop in movie info')
       return (
         <Grid>
           <Header />
@@ -95,7 +90,7 @@ class MovieInfoContainer extends React.Component {
                   }
                 </p>
                 <div className="emptySpace"></div>
-                <Button onClick={this.goBack}>Back</Button>
+                <a href="#" className="btn btn-default forDesktop" onClick={this.goBack}>Back</a>
               </Col>
 
               <Col xs={12} md={8}>
@@ -104,6 +99,7 @@ class MovieInfoContainer extends React.Component {
                 videoId={this.props.videoData.key}
                 onReady={this._onReady}
                 />
+                <a href="#" className="btn btn-default forMobile" onClick={this.goBack}>Back</a>
                 {review}
               </Col>
             </div>

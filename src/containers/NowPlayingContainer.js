@@ -53,7 +53,7 @@ class NowPlayingContainer extends React.Component {
       console.log(this.state, ' this state, nowPlaying')
       return (
         <div className="nowPlayingContainer">
-
+        <p>HELLO!!</p>
             {!this.state.nowPlayingList ? 'Loading...':
             this.state.nowPlayingList.map((movie, i)=>{
               if(movie.poster_path === null){
