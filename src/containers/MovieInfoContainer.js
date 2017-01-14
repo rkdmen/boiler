@@ -24,16 +24,15 @@ class MovieInfoContainer extends React.Component {
     }
 
     render() {
+      //Checks if there is zero review, one review, or more than one.
       let review;
       if(this.props.reviewData){
-        // console.log('inside review!!!')
         if(this.props.reviewData.length === 0){
           review = (
             <div className="reviewContainer">
               <span className="bold">No review available.</span>
             </div>
           )
-
         }
         if(this.props.reviewData.length === 1){
           review = (
@@ -42,9 +41,7 @@ class MovieInfoContainer extends React.Component {
                 <p>
                   <span className="reviewAuthor">{this.props.reviewData[0].author}:</span>
                 </p>
-                <p>
-                  {this.props.reviewData[0].content}
-                </p>
+                <p> {this.props.reviewData[0].content} </p>
               </div>
             )
         }
@@ -67,7 +64,7 @@ class MovieInfoContainer extends React.Component {
               </div>
             )
         }
-      }
+      } //End of {review} condition.
       return (
         <Grid >
           <Header />
@@ -123,7 +120,6 @@ MovieInfoContainer.propTypes = {
 }
 
 function mapStateToProps(state) {
-  // console.log(state, ' state MovieInfoDetailContainer###')
     return {
       movieData: state.reducer.movie.movieData,
       videoData: state.reducer.movie.videoData,
