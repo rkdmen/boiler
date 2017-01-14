@@ -20,7 +20,7 @@ class MovieInfoContainer extends React.Component {
     }
 
     goBack() {
-     browserHistory.goBack();
+      browserHistory.goBack();
     }
 
     render() {
@@ -56,9 +56,9 @@ class MovieInfoContainer extends React.Component {
                   {
                     this.props.reviewData.map((rev, i)=>{
                       return (
-                        <div>
-                          <span key={i} className="reviewAuthor">{rev.author}:</span>
-                          <p>{rev.content}</p>
+                        <div key={i}>
+                          <span className="reviewAuthor">{rev.author}:</span>
+                          <p >{rev.content}</p>
                         </div>
                         )
                     })
@@ -69,14 +69,14 @@ class MovieInfoContainer extends React.Component {
         }
       }
       return (
-        <Grid>
+        <Grid >
           <Header />
             <Row>
             {!this.props.videoData ? <div className="loading">Loading....</div>:
             <div className="movieInfoContainer">
 
               <Col xs={12} md={4}>
-                <p className="movieTitle">{this.props.movieData.original_title}</p>
+                <p className="movieTitle">{!this.props.movieData.original_title?'':this.props.movieData.original_title}</p>
                 <img src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+this.props.movieData.poster_path} alt="poster"/>
                 <div className="emptySpace"></div>
                 <p><span className="bold">Released: </span> {this.props.movieData.release_date}</p>
@@ -89,8 +89,8 @@ class MovieInfoContainer extends React.Component {
                     <li key={i}>{g.name}&nbsp;</li>)
                   }
                 </p>
-                <div className="emptySpace"></div>
-                <a href="#" className="btn btn-default forDesktop" onClick={this.goBack}>Back</a>
+                <div className="emptySpace forDesktop"></div>
+                <Button className="btn btn-default forDesktop" bsStyle="primary" bsSize="large" onClick={this.goBack}>Back</Button>
               </Col>
 
               <Col xs={12} md={8}>
@@ -99,7 +99,8 @@ class MovieInfoContainer extends React.Component {
                 videoId={this.props.videoData.key}
                 onReady={this._onReady}
                 />
-                <a href="#" className="btn btn-default forMobile" onClick={this.goBack}>Back</a>
+                <div className="emptySpace forMobile"></div>
+                <Button className="btn btn-default forMobile" bsStyle="primary" bsSize="large" onClick={this.goBack}>Back</Button>
                 {review}
               </Col>
             </div>

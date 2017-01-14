@@ -28,6 +28,9 @@ const Store = createStore(
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, Store);
 
+
+
+
 ReactDOM.render(
     <Provider store={Store}>
         <Router history={history}>

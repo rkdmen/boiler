@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button } from 'react-bootstrap';
-import { getNowPlayingList } from '../actions/movieActions';
+import { Link } from 'react-router';
+import { Button,  DropdownButton, MenuItem  } from 'react-bootstrap';
+import { getNowPlayingList, getGenreData, searchByGenre } from '../actions/movieActions';
 import NowPlayingDetailContainer from './NowPlayingDetailContainer';
 
 class NowPlayingContainer extends React.Component {
@@ -11,29 +12,31 @@ class NowPlayingContainer extends React.Component {
         this.state = {
           nowPlayingList:[],
           page:1,
-          disableBtn:true
+          disableBtn:true,
+          genres: []
         };
         this.nextPage = this.nextPage.bind(this);
         this.prevPage = this.prevPage.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
       this.props.getNowPlayingList(1);
+      this.props.getGenreData();
     }
     componentWillReceiveProps(nextProps) {
-      console.log(nextProps, ' next prop updated' );
-      this.setState({nowPlayingList:nextProps.nowPlayingList})
+      console.log(nextProps, 'NextProps~')
+      this.setState({nowPlayingList:nextProps.nowPlayingList, genres:nextProps.genreData})
     }
 
     nextPage(){
-  window.scrollTo(0, 0)
-      this.setState({page:this.state.page+1})
+      window.scrollTo(0, 0);
+      this.setState({page:this.state.page+1});
       this.props.getNowPlayingList(this.state.page+1);
-      this.setState({disableBtn:false})
-
+      this.setState({disableBtn:false});
     }
 
     prevPage(){
-  window.scrollTo(0, 0)
+      window.scrollTo(0, 0);
       if(this.state.page === 1){
         this.setState({disableBtn:true})
         return;
@@ -42,18 +45,25 @@ class NowPlayingContainer extends React.Component {
         this.props.getNowPlayingList(this.state.page-1)
         .then(()=>{
           if(this.state.page === 1){
-          console.log('disabled BTN!!')
           this.setState({disableBtn:true})
           }
         })
       }
     }
+    handleChange(val){
+      console.log(val, ' selected val')
+      this.props.searchByGenre(val)
+      .then(()=>{
+        this.setState({nowPlayingList:this.props.searchByGenreResult})
+
+      })
+    }
 
     render() {
       console.log(this.state, ' this state, nowPlaying')
+      console.log(this.props, ' this props, nowPlaying')
       return (
         <div className="nowPlayingContainer">
-        <p>HELLO!!</p>
             {!this.state.nowPlayingList ? 'Loading...':
             this.state.nowPlayingList.map((movie, i)=>{
               if(movie.poster_path === null){
@@ -77,27 +87,43 @@ class NowPlayingContainer extends React.Component {
           <div className="btnGroup">
             <Button className='btn btn-default btn-lg next' disabled={this.state.disableBtn} onClick={this.prevPage}>Prev</Button>
             <Button className='btn btn-default btn-lg next' onClick={this.nextPage}>Next</Button>
+            <div className="emptySpace"></div>
+              <DropdownButton dropup bsStyle="info" onSelect={ (val) => this.handleChange(val) } title="Search By Genre" id="bg-nested-dropdown" >
+                {!this.state.genres?<MenuItem>Loading...</MenuItem>:
+                  this.state.genres.map((genre, i) =>{
+                    return (
+                        <MenuItem key={i} eventKey={genre.id}>
+                          {genre.name}
+                        </MenuItem>
+                      )
+                  })
+                }
+              </DropdownButton>
           </div>
 
         </div>
         )
     }
-
 }
 
 NowPlayingContainer.propTypes = {
-    getNowPlayingList: React.PropTypes.func
+    getNowPlayingList: React.PropTypes.func,
+    getGenreData: React.PropTypes.func,
+    searchByGenre: React.PropTypes.func,
+    searchByGenreResult: React.PropTypes.array
 }
 
 function mapStateToProps(state) {
-  console.log(state, ' state movieContainer')
+  console.log(state, ' state map ~~~')
     return {
-      nowPlayingList: state.reducer.movie.movieList
+      nowPlayingList: state.reducer.movie.movieList,
+      genreData: state.reducer.movie.genreData,
+      searchByGenreResult: state.reducer.movie.searchByGenre
     }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getNowPlayingList }, dispatch);
+  return bindActionCreators({ getNowPlayingList, getGenreData, searchByGenre }, dispatch);
 }
 
 

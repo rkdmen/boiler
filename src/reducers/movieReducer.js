@@ -26,6 +26,19 @@ export function movieReducer(state = {}, action) {
           reviewData:action.payload.data.results
         });
 
+      case type.RETRIEVE_GENRE:
+      console.log('RETRIEVE_GENRE')
+        return Object.assign({}, state, {
+          genreData:action.payload.data.genres
+        });
+
+      case type.SEARCH_BY_GENRE:
+      console.log('SEARCH_BY_GENRE')
+        return Object.assign({}, state, {
+          searchByGenre:action.payload.data.results
+        });
+
+
       default:
           return state;
     }
