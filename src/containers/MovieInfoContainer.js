@@ -26,7 +26,7 @@ class MovieInfoContainer extends React.Component {
     render() {
       let review;
       if(this.props.reviewData){
-        console.log('inside review!!!')
+        // console.log('inside review!!!')
         if(this.props.reviewData.length === 0){
           review = (
             <div className="reviewContainer">
@@ -123,7 +123,7 @@ MovieInfoContainer.propTypes = {
 }
 
 function mapStateToProps(state) {
-  console.log(state, ' state MovieInfoDetailContainer###')
+  // console.log(state, ' state MovieInfoDetailContainer###')
     return {
       movieData: state.reducer.movie.movieData,
       videoData: state.reducer.movie.videoData,

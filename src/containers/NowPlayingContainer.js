@@ -24,7 +24,7 @@ class NowPlayingContainer extends React.Component {
       this.props.getGenreData();
     }
     componentWillReceiveProps(nextProps) {
-      console.log(nextProps, 'NextProps~')
+      // console.log(nextProps, 'NextProps~')
       this.setState({nowPlayingList:nextProps.nowPlayingList, genres:nextProps.genreData})
     }
 
@@ -51,7 +51,6 @@ class NowPlayingContainer extends React.Component {
       }
     }
     handleChange(val){
-      console.log(val, ' selected val')
       this.props.searchByGenre(val)
       .then(()=>{
         this.setState({nowPlayingList:this.props.searchByGenreResult})
@@ -60,8 +59,6 @@ class NowPlayingContainer extends React.Component {
     }
 
     render() {
-      console.log(this.state, ' this state, nowPlaying')
-      console.log(this.props, ' this props, nowPlaying')
       return (
         <div className="nowPlayingContainer">
             {!this.state.nowPlayingList ? 'Loading...':
@@ -114,7 +111,7 @@ NowPlayingContainer.propTypes = {
 }
 
 function mapStateToProps(state) {
-  console.log(state, ' state map ~~~')
+  // console.log(state, ' state map ~~~')
     return {
       nowPlayingList: state.reducer.movie.movieList,
       genreData: state.reducer.movie.genreData,
