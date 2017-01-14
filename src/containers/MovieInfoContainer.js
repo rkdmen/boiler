@@ -30,7 +30,7 @@ class MovieInfoContainer extends React.Component {
         console.log('inside review!!!')
         if(this.props.reviewData.length === 0){
           review = (
-            <div>
+            <div className="reviewContainer">
               <span className="bold">No review available.</span>
             </div>
           )
@@ -38,7 +38,7 @@ class MovieInfoContainer extends React.Component {
         }
         if(this.props.reviewData.length === 1){
           review = (
-              <div>
+              <div className="reviewContainer">
                 <span className="bold">Review: </span>
                 <p>
                   <span className="reviewAuthor">{this.props.reviewData[0].author}:</span>
@@ -51,9 +51,9 @@ class MovieInfoContainer extends React.Component {
         }
         if(this.props.reviewData.length > 1){
           review = (
-              <div>
+              <div className="reviewContainer">
                 <span className="bold">Reviews: </span>
-                <p>
+                <div>
                   {
                     this.props.reviewData.map((rev, i)=>{
                       return (
@@ -64,7 +64,7 @@ class MovieInfoContainer extends React.Component {
                         )
                     })
                   }
-                </p>
+                </div>
               </div>
             )
         }
@@ -79,19 +79,23 @@ class MovieInfoContainer extends React.Component {
             <Row>
             {!this.props.videoData ? 'Loading...':
             <div className="movieInfoContainer">
+
               <Col xs={12} md={4}>
                 <p className="movieTitle">{this.props.movieData.original_title}</p>
                 <img src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+this.props.movieData.poster_path} alt="poster"/>
                 <div className="emptySpace"></div>
+                <p><span className="bold">Released: </span> {this.props.movieData.release_date}</p>
                 <p><span className="bold">Rating: </span> {this.props.movieData.vote_average}/10</p>
                 <p><span className="bold">Runtime: </span>{this.props.movieData.runtime}mins</p>
                 <p><span className="bold">Synopsis: </span>{this.props.movieData.overview}</p>
                 <p>
-                  <span className="bold">Genre: </span>{this.props.movieData.genres.map((g, i)=><li key={i}>{g.name}&nbsp;</li>)}
+                  <span className="bold">Genre: </span>
+                  {this.props.movieData.genres.map((g, i)=>
+                    <li key={i}>{g.name}&nbsp;</li>)
+                  }
                 </p>
                 <div className="emptySpace"></div>
                 <Button onClick={this.goBack}>Back</Button>
-
               </Col>
 
               <Col xs={12} md={8}>
@@ -100,9 +104,7 @@ class MovieInfoContainer extends React.Component {
                 videoId={this.props.videoData.key}
                 onReady={this._onReady}
                 />
-
                 {review}
-
               </Col>
             </div>
           }

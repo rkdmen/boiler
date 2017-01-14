@@ -1,5 +1,6 @@
 .movieInfoContainer{
   padding-top:60px;
+  word-wrap: break-word;
 
   img {
     width:250px;
@@ -40,4 +41,12 @@
     font-weight:500;
     font-style:italic;
   }
+  .reviewContainer {
+    max-height:600px;
+    overflow:auto;
+  }
+
 }
+
+
+

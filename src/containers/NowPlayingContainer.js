@@ -25,12 +25,15 @@ class NowPlayingContainer extends React.Component {
     }
 
     nextPage(){
+  window.scrollTo(0, 0)
       this.setState({page:this.state.page+1})
       this.props.getNowPlayingList(this.state.page+1);
       this.setState({disableBtn:false})
+
     }
 
     prevPage(){
+  window.scrollTo(0, 0)
       if(this.state.page === 1){
         this.setState({disableBtn:true})
         return;
