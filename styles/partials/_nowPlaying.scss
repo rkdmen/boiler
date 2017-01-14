@@ -16,7 +16,11 @@
     display:inline-block;
     float:left;
     width:185px;
-
+    @media #{$mq-xs}{
+      /* Only for Mobile*/
+      padding-left:0% !important;
+      width:100% !important;
+    }
     @media #{$mq-xs, $mq-sm}{
         padding-left:10%;
         margin: 0 auto;
