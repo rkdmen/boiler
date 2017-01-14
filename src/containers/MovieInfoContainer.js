@@ -77,7 +77,7 @@ class MovieInfoContainer extends React.Component {
         <Grid>
           <Header />
             <Row>
-            {!this.props.videoData ? 'Loading...':
+            {!this.props.videoData ? <div className="loading">Loading....</div>:
             <div className="movieInfoContainer">
 
               <Col xs={12} md={4}>
