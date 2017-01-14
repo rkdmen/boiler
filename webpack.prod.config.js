@@ -1,28 +1,46 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'source-map',
+
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
     './src/index.jsx'
   ],
+
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
     publicPath: '/build/'
   },
+
+  plugins: [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
+  ],
+
   module: {
     loaders: [
-      {
-        test: /\.jsx?$/,
-        loaders: ['babel'],
-        include: path.join(__dirname, 'src')
-      },
-      {
-        test: /\.scss$/,
-        loaders: ["style", "css", "sass"]
-      }
+      { test: /\.js?$/,
+        loader: 'babel',
+        exclude: /node_modules/ },
+      { test: /\.scss?$/,
+        loader: 'style!css!sass',
+        include: path.join(__dirname, 'src', 'styles') },
+      { test: /\.png$/,
+        loader: 'file' },
+      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file'}
     ]
   }
 }
