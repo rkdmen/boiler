@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint src",
     "build": "NODE_ENV=production webpack --config ./webpack.prod.config.js --progress --colors",
-    "start": "node app.js"
+    "start": "node app.js",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
   },
   "engines": {
     "node": "v6.7.0"
