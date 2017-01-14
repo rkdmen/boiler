@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { Button,  DropdownButton, MenuItem  } from 'react-bootstrap';
 import { getNowPlayingList, getGenreData, searchByGenre } from '../actions/movieActions';
 import NowPlayingDetailContainer from './NowPlayingDetailContainer';
-import _ from 'lodash';
 
 class NowPlayingContainer extends React.Component {
     constructor(props) {

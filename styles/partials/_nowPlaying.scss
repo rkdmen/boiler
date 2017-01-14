@@ -2,9 +2,12 @@
   margin: 0 auto;
   padding-top: 60px;
   width: 100%;
-  float:left;
+  float:right;
+  display:table-cell;
   @media #{$mq-xs, $mq-sm}{
-    padding-left:5%;
+    position:relative;
+    text-align:center;
+    margin: 0 auto;
   }
 
   .singleMovie {
@@ -13,6 +16,15 @@
     display:inline-block;
     float:left;
     width:185px;
+
+    @media #{$mq-xs, $mq-sm}{
+        padding-left:10%;
+        margin: 0 auto;
+        width:290px;
+        img {
+          width:290px;
+        }
+      }
 
     .overlay {
       // display:none;
@@ -34,15 +46,8 @@
       transition:opacity 1s ease;
       opacity: .6 !important;
       filter: alpha(opacity=60); /* For IE8 and earlier */
-
     }
 
-    @media #{$mq-xs, $mq-sm}{
-        width:150px;
-        img {
-          width:150px;
-        }
-      }
     &:hover{
       opacity:.7 !important;
       filter: alpha(opacity=70); /* For IE8 and earlier */
