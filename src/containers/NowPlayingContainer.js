@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import { Button,  DropdownButton, MenuItem  } from 'react-bootstrap';
 import { getNowPlayingList, getGenreData, searchByGenre } from '../actions/movieActions';
 import NowPlayingDetailContainer from './NowPlayingDetailContainer';
-import { Link } from 'react-router';
 
 class NowPlayingContainer extends React.Component {
     constructor(props) {
@@ -21,7 +20,7 @@ class NowPlayingContainer extends React.Component {
 
     componentDidMount() {
       //On main page, it will load with first page section of NowPlaying and get list of genre
-      this.props.getNowPlayingList(1);
+      this.props.getNowPlayingList(this.state.page);
       this.props.getGenreData();
     }
 
@@ -35,28 +34,23 @@ class NowPlayingContainer extends React.Component {
       // browserHistory.push(`/page/${this.state.page+1}`)
       setTimeout(()=>{
         //after button is called using setTimeout 400ms to prevent rendering immediately.
-        this.setState({page:this.state.page+1});
-        this.setState({disableBtn:false});
-          this.props.getNowPlayingList(this.state.page+1)
-      }, 400);
+        this.props.getNowPlayingList(this.state.page+1)
+        this.setState({page:this.state.page+1, disableBtn:false})
+        }, 400)
     }
 
 
     prevPage(){
       //Search prev page for NowPlaying
       window.scrollTo(0, 0);
-      if(this.state.page === 1){
-        this.setState({disableBtn:true})
-        return;
-      } else {
-          this.setState({page:this.state.page-1})
+          this.setState({page:this.state.page-1});
           this.props.getNowPlayingList(this.state.page-1)
           .then(()=>{
             if(this.state.page === 1){
-            this.setState({disableBtn:true})
+            //disable prev button if current page is 1
+            this.setState({disableBtn:true});
             }
           })
-      }
     }
 
     handleChange(val){
@@ -91,12 +85,8 @@ class NowPlayingContainer extends React.Component {
           }
           <div className="emptySpace"></div>
           <div className="btnGroup">
-            <Link to={`/page/${this.state.page-1}`}>
-              <Button className='btn btn-default btn-lg next' disabled={this.state.disableBtn} onClick={this.prevPage}>Prev</Button>
-            </Link>
-            <Link to={`/page/${this.state.page+1}`}>
-              <Button className='btn btn-default btn-lg next' onClick={this.nextPage}>Next</Button>
-            </Link>
+            <Button className='btn btn-default btn-lg next' disabled={this.state.disableBtn} onClick={this.prevPage}>Prev</Button>
+            <Button className='btn btn-default btn-lg next' onClick={this.nextPage}>Next</Button>
             <div className="emptySpace"></div>
               <DropdownButton dropup bsStyle="info" onSelect={ (val) => this.handleChange(val) } title="Search By Genre" id="bg-nested-dropdown" >
                 {!this.state.genres?<MenuItem>Loading...</MenuItem>:
@@ -110,7 +100,6 @@ class NowPlayingContainer extends React.Component {
                 }
               </DropdownButton>
           </div>
-
         </div>
         )
     }

@@ -19,8 +19,8 @@ class MovieInfoContainer extends React.Component {
     }
 
     goBack() {
-      browserHistory.push('/')
-      // browserHistory.goBack();
+      //Goes back to beginning of app
+      browserHistory.goBack();
     }
 
     render() {

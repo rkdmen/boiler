@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 class NowPlayingDetailContainer extends React.Component {
@@ -46,7 +45,6 @@ NowPlayingDetailContainer.propTypes = {
     backPoster:React.PropTypes.string,
     id:React.PropTypes.number,
     title: React.PropTypes.string
-
 }
 
-export default connect(null, null)(NowPlayingDetailContainer);
+export default NowPlayingDetailContainer;

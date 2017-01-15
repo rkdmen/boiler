@@ -12,12 +12,10 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
-    publicPath: 'build'
+    publicPath: '/build/'
   },
   devServer: {
-    historyApiFallback:{
-        index:'build/index.html'
-    }
+    historyApiFallback:true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
