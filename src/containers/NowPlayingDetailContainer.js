@@ -24,6 +24,7 @@ class NowPlayingDetailContainer extends React.Component {
     }
 
     unhover() {
+        //On poster hover, will show back poster if available.
         this.setState({imgSrc: this.props.poster})
     }
 

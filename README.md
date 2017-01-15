@@ -30,3 +30,5 @@ Deployed Version [now-playing-movie.herokuapp.com](https://now-playing-movie.her
   - open localhost:8000 from browser
 
 ```
+
+#### By John KM Jung
