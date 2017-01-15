@@ -1,4 +1,3 @@
-## Now Playing
 
 ### The Tech Stack:
 
