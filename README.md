@@ -27,7 +27,7 @@ Deployed Version [now-playing-movie.herokuapp.com](https://now-playing-movie.her
 
    $ npm install
    $ npm start
-  - open localhost:8000 from browser
+  - open localhost:3000 from browser
 
 ```
 
