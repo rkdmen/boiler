@@ -2,13 +2,15 @@
 
 .header {
     color:white;
+    opacity:.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
     font-size:26px;
     padding-top: 10px;
     background: $header;
     height: 50px;
     left:0;
     top:0;
-    position:absolute;
+    position:fixed;
     margin:0 auto;
     width:100%;
     z-index: 999;
