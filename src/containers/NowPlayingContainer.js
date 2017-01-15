@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Button,  DropdownButton, MenuItem  } from 'react-bootstrap';
 import { getNowPlayingList, getGenreData, searchByGenre } from '../actions/movieActions';
 import NowPlayingDetailContainer from './NowPlayingDetailContainer';
+import { Link } from 'react-router';
 
 class NowPlayingContainer extends React.Component {
     constructor(props) {
@@ -31,6 +32,7 @@ class NowPlayingContainer extends React.Component {
     nextPage(){
       //Search next page for NowPlaying
       window.scrollTo(0, 0);
+      // browserHistory.push(`/page/${this.state.page+1}`)
       setTimeout(()=>{
         //after button is called using setTimeout 400ms to prevent rendering immediately.
         this.setState({page:this.state.page+1});
@@ -89,8 +91,12 @@ class NowPlayingContainer extends React.Component {
           }
           <div className="emptySpace"></div>
           <div className="btnGroup">
-            <Button className='btn btn-default btn-lg next' disabled={this.state.disableBtn} onClick={this.prevPage}>Prev</Button>
-            <Button className='btn btn-default btn-lg next' onClick={this.nextPage}>Next</Button>
+            <Link to={`/page/${this.state.page-1}`}>
+              <Button className='btn btn-default btn-lg next' disabled={this.state.disableBtn} onClick={this.prevPage}>Prev</Button>
+            </Link>
+            <Link to={`/page/${this.state.page+1}`}>
+              <Button className='btn btn-default btn-lg next' onClick={this.nextPage}>Next</Button>
+            </Link>
             <div className="emptySpace"></div>
               <DropdownButton dropup bsStyle="info" onSelect={ (val) => this.handleChange(val) } title="Search By Genre" id="bg-nested-dropdown" >
                 {!this.state.genres?<MenuItem>Loading...</MenuItem>:

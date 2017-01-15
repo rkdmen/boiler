@@ -35,6 +35,7 @@ ReactDOM.render(
         <Router history={history}>
           <Route path="/" component={App}/>
             <Route path="/info/:id" component={MovieInfoContainer}/>
+            <Route path="/page/:num" component={App}/>
         </Router>
     </Provider>,
     document.getElementById('react-root')
