@@ -25,6 +25,7 @@ Deployed Version [now-playing-movie.herokuapp.com](https://now-playing-movie.her
 - Download Repo and
 ```js
 
+   $ npm install
    $ npm start
   - open localhost:8000 from browser
 
