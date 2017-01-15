@@ -5,7 +5,6 @@ import { browserHistory } from 'react-router';
 import { Button, Col, Row, Grid } from 'react-bootstrap';
 import { getMovieDetail, getVideo, getReview } from '../actions/movieActions';
 import Header from '../components/Header';
-import YouTube from 'react-youtube';
 
 class MovieInfoContainer extends React.Component {
     constructor(props) {
@@ -92,10 +91,11 @@ class MovieInfoContainer extends React.Component {
 
               <Col xs={12} md={8}>
                 <p className="trailerTitle">{!this.props.videoData.name ? '':this.props.videoData.name}</p>
-                <YouTube
-                videoId={this.props.videoData.key}
-                onReady={this._onReady}
-                />
+
+                <div className="embed-responsive embed-responsive-16by9">
+                  <iframe src={`https://www.youtube.com/embed/${this.props.videoData.key}`} className="embed-responsive-item"></iframe>
+                </div>
+
                 <div className="emptySpace forMobile"></div>
                 <Button className="btn btn-default forMobile" bsStyle="primary" bsSize="large" onClick={this.goBack}>Back</Button>
                 {review}

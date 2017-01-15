@@ -1,5 +1,9 @@
 @import '../modules/variables';
 
+@-ms-viewport{
+  width: device-width;
+}
+
 .emptySpace {
     height:10px;
     clear:both;
