@@ -66,6 +66,7 @@ class NowPlayingContainer extends React.Component {
         <div className="nowPlayingContainer">
             {!this.state.nowPlayingList ? 'Loading...':
             this.state.nowPlayingList.map((movie, i)=>{
+              console.log(this.state.nowPlayingList, ' this state!!!')
               if(movie.poster_path === null){
                 /*For beauty purpose of my app, if poster data is not available
                 I decided omit from my app.

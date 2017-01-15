@@ -23,6 +23,24 @@ class MovieInfoContainer extends React.Component {
       browserHistory.goBack();
     }
 
+    starSymbol(rating){
+      let zero = '☆';
+      let one = '★';
+      let result;
+      // this.props.movieData.vote_average
+      if(rating === 0 || rating === null || rating === undefined){
+        result = (<span>Rating Not Available</span>)
+      }
+      if(rating > 0){
+        let temp = Math.round(rating);
+        let temp2 = 10 - temp;
+        temp = one.repeat(temp);
+        temp2 = zero.repeat(temp2);
+        result = (<span>{temp}{temp2}</span>)
+      }
+      return result;
+    }
+
     render() {
       //Checks if there is zero review, one review, or more than one.
       let review;
@@ -65,6 +83,9 @@ class MovieInfoContainer extends React.Component {
             )
         }
       } //End of {review} condition.
+
+      console.log(this.props, ' this props')
+      console.log(this.props.videoData, '.videoData')
       return (
         <Grid >
           <Header />
@@ -78,6 +99,7 @@ class MovieInfoContainer extends React.Component {
                 <div className="emptySpace"></div>
                 <p><span className="bold">Released: </span> {this.props.movieData.release_date}</p>
                 <p><span className="bold">Rating: </span> {this.props.movieData.vote_average}/10</p>
+                <p><span className="bold">Rating: </span> {this.starSymbol(this.props.movieData.vote_average)}</p>
                 <p><span className="bold">Runtime: </span>{this.props.movieData.runtime}mins</p>
                 <p><span className="bold">Synopsis: </span>{this.props.movieData.overview}</p>
                 <p>
