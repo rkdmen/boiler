@@ -1,4 +1,3 @@
-## Now Playing
 
 ### About Application:
 This application utilize The Movie Database.
