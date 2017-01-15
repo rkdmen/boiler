@@ -84,21 +84,18 @@ class MovieInfoContainer extends React.Component {
         }
       } //End of {review} condition.
 
-      console.log(this.props, ' this props')
-      console.log(this.props.videoData, '.videoData')
       return (
         <Grid >
           <Header />
             <Row>
-            {!this.props.videoData ? <div className="loading">Loading....</div>:
+            {!this.props.videoData ? <div className="loading">Loading...</div>:
             <div className="movieInfoContainer">
 
               <Col xs={12} md={4}>
-                <p className="movieTitle">{!this.props.movieData.original_title?'':this.props.movieData.original_title}</p>
+                <p className="movieTitle">{!this.props.movieData.original_title?'sdfss':this.props.movieData.original_title}</p>
                 <img src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+this.props.movieData.poster_path} alt="poster"/>
                 <div className="emptySpace"></div>
                 <p><span className="bold">Released: </span> {this.props.movieData.release_date}</p>
-                <p><span className="bold">Rating: </span> {this.props.movieData.vote_average}/10</p>
                 <p><span className="bold">Rating: </span> {this.starSymbol(this.props.movieData.vote_average)}</p>
                 <p><span className="bold">Runtime: </span>{this.props.movieData.runtime}mins</p>
                 <p><span className="bold">Synopsis: </span>{this.props.movieData.overview}</p>
@@ -113,7 +110,7 @@ class MovieInfoContainer extends React.Component {
               </Col>
 
               <Col xs={12} md={8}>
-                <p className="trailerTitle">{!this.props.videoData.name ? '':this.props.videoData.name}</p>
+                <p className="trailerTitle bold">{!this.props.videoData.name ? '':this.props.videoData.name}</p>
 
                 <div className="embed-responsive embed-responsive-16by9">
                   <iframe src={`https://www.youtube.com/embed/${this.props.videoData.key}`} className="embed-responsive-item"></iframe>

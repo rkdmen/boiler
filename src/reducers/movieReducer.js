@@ -9,12 +9,17 @@ export function movieReducer(state = {}, action) {
         });
 
       case type.RETRIEVE_MOVIE_DETAIL:
-      console.log(action.payload, ' action payload in detail')
         return Object.assign({}, state, {
           movieData:action.payload.data
         });
 
       case type.RETRIEVE_VIDEO:
+        if(action.payload.data.results.length === 0){
+          return Object.assign({}, state, {
+          videoData: {name:'Trailer Not Available'}
+        });
+        }
+
         return Object.assign({}, state, {
           videoData:action.payload.data.results[0]
         });
