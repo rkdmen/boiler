@@ -1,24 +1,72 @@
 @import '../modules/variables';
 
 .header {
-    color:white;
     opacity:.8;
     filter: alpha(opacity=80); /* For IE8 and earlier */
     font-size:26px;
     padding-top: 10px;
     background: $header;
-    height: 50px;
+    height: 55px;
     left:0;
     top:0;
     position:fixed;
     margin:0 auto;
-    width:100%;
+    min-width:100% !important;
     z-index: 999;
     clear:both;
     text-align:center;
+    .headerLeft {
+            &:hover{
+                color:$hoverGreen;
+            }
+        color:white;
+        padding-bottom:10px;
+        width:50%;
+        left:0;
+        display:inline-block;
+        height:35px;
+
+    }
+    .headerRight {
+            &:hover{
+                color:$hoverGreen;
+            }
+        color:white;
+        width:50%;
+        padding-bottom:10px;
+        right:0;
+        display:inline-block;
+        height:35px;
+    }
+
     @media #{$mq-xs, $mq-sm}{
-        height: 40px;
-        font-size:20px;
+            height: 55px;
+            display:flex;
+            justify-content:center;
+        .headerLeft {
+
+            top:10;
+            margin:0 auto;
+            padding-right:20px;
+            position:absolute;
+            font-size:18px;
+            font-weight:600;
+            text-decoration:none;
+            display:flex;
+            justify-content:center;
+        }
+        .headerRight {
+            top:10;
+            padding-left:20px;
+            position:absolute;
+            font-size:18px;
+            font-weight:600;
+            margin:0 auto;
+            text-decoration:none;
+            display:flex;
+            justify-content:center;
+
+        }
     }
 }
 

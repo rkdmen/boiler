@@ -12,12 +12,11 @@ import promise from 'redux-promise';
 import { Router, Route, browserHistory, IndexRoute, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
-import App from './App.jsx';
+// import App from './App.jsx';
 import Main from './components/Main';
 import rootReducer from './reducers/index';
 import MovieInfoContainer from './containers/MovieInfoContainer';
-import UpcomingMovieContainer from './containers/UpcomingMovieContainer';
-
+import MainUpcoming from './components/MainUpcoming'
 
 const Store = createStore(
   combineReducers({
@@ -35,8 +34,8 @@ const history = syncHistoryWithStore(hashHistory, Store);
 ReactDOM.render(
     <Provider store={Store}>
         <Router history={history}>
-          <Route path="/" component={App}/>
-          <Route path="/upcoming" component={UpcomingMovieContainer}/>
+          <Route path="/" component={Main}/>
+          <Route path="/upcoming" component={MainUpcoming}/>
           <Route path="/info/:id" component={MovieInfoContainer}/>
         </Router>
     </Provider>,

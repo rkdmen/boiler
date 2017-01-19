@@ -42,7 +42,7 @@ export function movieReducer(state = {}, action) {
       case type.RETRIVE_UPCOMING:
       console.log(action.payload, ' upcoming movie data');
         return Object.assign({}, state, {
-          upcomingData:action.payload.data
+          upcomingData:action.payload.data.results
         });
 
       default:

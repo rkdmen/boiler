@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button,  DropdownButton, MenuItem  } from 'react-bootstrap';
-import { getUpcoming } from '../actions/movieActions';
+import { Button } from 'react-bootstrap';
+import { getUpcoming, getGenreData } from '../actions/movieActions';
 import NowPlayingDetailContainer from './NowPlayingDetailContainer';
 
 class UpcomingMovieContainer extends React.Component {
@@ -25,6 +25,7 @@ class UpcomingMovieContainer extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
+      console.log(nextProps, ' comopnentWIllReceiveProps')
       this.setState({upcomingList:nextProps.upcomingList, genres:nextProps.genreData})
     }
 
@@ -57,15 +58,15 @@ class UpcomingMovieContainer extends React.Component {
     //   //Shows first page of by genre
     //   this.props.searchByGenre(val)
     //   .then(()=>{
-    //     this.setState({nowPlayingList:this.props.searchByGenreResult});
+    //     this.setState({upcomingList:this.props.searchByGenreResult});
     //   })
     // }
 
     render() {
       return (
         <div className="nowPlayingContainer">
-            {!this.state.nowPlayingList ? 'Loading...':
-            this.state.nowPlayingList.map((movie, i)=>{
+            {!this.state.upcomingList ? 'Loading...':
+            this.state.upcomingList.map((movie, i)=>{
               if(movie.poster_path === null){
                 /*For beauty purpose of my app, if poster data is not available
                 I decided omit from my app.
@@ -96,16 +97,18 @@ class UpcomingMovieContainer extends React.Component {
 
 UpcomingMovieContainer.propTypes = {
     getUpcoming: React.PropTypes.func,
+    getGenreData: React.PropTypes.func
 }
 
 function mapStateToProps(state) {
+  console.log(state, ' upcomingState')
     return {
-      upcomingList: state.reducer.movie.upcomingData,
+      upcomingList: state.reducer.movie.upcomingData
     }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getUpcoming }, dispatch);
+  return bindActionCreators({ getUpcoming, getGenreData }, dispatch);
 }
 
 

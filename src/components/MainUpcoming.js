@@ -1,16 +1,16 @@
 import React from 'react';
 import { Col, Row, Grid } from 'react-bootstrap';
-import MovieNow from './MovieNow';
+import UpcomingMovieContainer from '../containers/UpcomingMovieContainer';
 import Header from './Header';
 
-class Main extends React.Component {
+class MainUpcoming extends React.Component {
   render(){
     return (
           <Grid className="main-container">
             <Header />
             <Row>
               <Col xs={12} md={12}>
-                  <MovieNow />
+                  <UpcomingMovieContainer />
               </Col>
             </Row>
           </Grid>
@@ -19,4 +19,4 @@ class Main extends React.Component {
 }
 
 
-export default Main;
+export default MainUpcoming;

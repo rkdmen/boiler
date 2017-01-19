@@ -1,7 +1,8 @@
 import React from 'react';
 import NowPlayingContainer from '../containers/NowPlayingContainer';
+import UpcomingMovieContainer from '../containers/UpcomingMovieContainer';
 
-class Movie extends React.Component {
+class MovieNow extends React.Component {
   render(){
     return (
     <div>
@@ -11,4 +12,4 @@ class Movie extends React.Component {
   }
 }
 
-export default Movie;
+export default MovieNow;
