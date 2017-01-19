@@ -16,6 +16,7 @@ import App from './App.jsx';
 import Main from './components/Main';
 import rootReducer from './reducers/index';
 import MovieInfoContainer from './containers/MovieInfoContainer';
+import UpcomingMovieContainer from './containers/UpcomingMovieContainer';
 
 
 const Store = createStore(
@@ -35,6 +36,7 @@ ReactDOM.render(
     <Provider store={Store}>
         <Router history={history}>
           <Route path="/" component={App}/>
+          <Route path="/upcoming" component={UpcomingMovieContainer}/>
           <Route path="/info/:id" component={MovieInfoContainer}/>
         </Router>
     </Provider>,
