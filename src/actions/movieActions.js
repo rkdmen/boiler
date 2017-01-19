@@ -50,3 +50,12 @@ export function getGenreData(){
     payload: request
   }
 }
+
+export function getUpcoming(page){
+  const request = axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}&language=en-US&page=${page}`);
+  return {
+    type: type.RETRIVE_UPCOMING,
+    payload: request
+  }
+}
+

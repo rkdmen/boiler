@@ -6,6 +6,9 @@ const Header = () => (
       <Link to={'/'}>
         <h3 className="header">Now Playing</h3>
       </Link>
+      <Link to={'/upcoming'}>
+        <h3 className="header">Upcoming</h3>
+      </Link>
     </div>
 )
 

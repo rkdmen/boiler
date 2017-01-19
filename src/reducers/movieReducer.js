@@ -39,6 +39,11 @@ export function movieReducer(state = {}, action) {
           searchByGenre:action.payload.data.results
         });
 
+      case type.RETRIVE_UPCOMING:
+      console.log(action.payload, ' upcoming movie data');
+        return Object.assign({}, state, {
+          searchByGenre:action.payload.data.results
+        });
 
       default:
           return state;
