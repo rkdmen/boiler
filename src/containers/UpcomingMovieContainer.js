@@ -25,7 +25,6 @@ class UpcomingMovieContainer extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-      console.log(nextProps, ' comopnentWIllReceiveProps')
       this.setState({upcomingList:nextProps.upcomingList, genres:nextProps.genreData})
     }
 
@@ -101,7 +100,6 @@ UpcomingMovieContainer.propTypes = {
 }
 
 function mapStateToProps(state) {
-  console.log(state, ' upcomingState')
     return {
       upcomingList: state.reducer.movie.upcomingData
     }
