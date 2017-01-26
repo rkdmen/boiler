@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { Button, Col, Row, Grid } from 'react-bootstrap';
-import { getMovieDetail, getVideo, getReview } from '../actions/movieActions';
+import { getMovieDetail, getVideo, getReview, saveMovie, getSavedMovie } from '../actions/movieActions';
 import Header from '../components/Header';
+
+
 
 class MovieInfoContainer extends React.Component {
     constructor(props) {
@@ -16,6 +18,8 @@ class MovieInfoContainer extends React.Component {
       this.props.getMovieDetail(this.props.params.id);
       this.props.getVideo(this.props.params.id);
       this.props.getReview(this.props.params.id);
+      this.props.getSavedMovie();
+      this.props.saveMovie();
     }
 
     goBack() {
@@ -148,7 +152,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getMovieDetail, getVideo, getReview }, dispatch);
+  return bindActionCreators({ getMovieDetail, getVideo, getReview, saveMovie, getSavedMovie }, dispatch);
 }
 
 

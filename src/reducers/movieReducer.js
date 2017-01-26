@@ -43,9 +43,21 @@ export function movieReducer(state = {}, action) {
         return Object.assign({}, state, {
           upcomingData:action.payload.data.results
         });
+      case type.SAVE_MOVIE:
+      console.log(action.payload, ' SAVE_MOVIE reducer')
+        return Object.assign({}, state, {
+          saveMovie:action.payload.data
+        });
+      case type.RETRIVE_SAVED_MOVIE:
+      console.log(action.payload, ' retrieve_saved reducer')
+        return Object.assign({}, state, {
+          savedMovieData:action.payload.data
+        });
 
       default:
           return state;
     }
 
 }
+
+

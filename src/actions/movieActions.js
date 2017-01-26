@@ -59,3 +59,20 @@ export function getUpcoming(page){
   }
 }
 
+export function saveMovie(movieInfo){
+  let testing = {movie:'testingMovie', id:123}
+  const request = axios.post('/api/movie/', testing);
+  return {
+    type: type.SAVE_MOVIE,
+    payload: request
+  }
+}
+export function getSavedMovie(){
+  console.log('saved action called')
+  const request = axios.get('/api/movie');
+  return {
+    type: type.RETRIVE_SAVED_MOVIE,
+    payload: request
+  }
+}
+
