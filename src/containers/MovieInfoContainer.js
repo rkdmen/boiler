@@ -12,6 +12,7 @@ class MovieInfoContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.saveMovie = this.saveMovie.bind(this);
     }
 
     componentDidMount() {
@@ -19,12 +20,15 @@ class MovieInfoContainer extends React.Component {
       this.props.getVideo(this.props.params.id);
       this.props.getReview(this.props.params.id);
       this.props.getSavedMovie();
-      this.props.saveMovie();
     }
 
     goBack() {
       //Goes back to beginning of app
       browserHistory.goBack();
+    }
+
+    saveMovie() {
+      this.props.saveMovie({ movieId:this.props.params.id, title:this.props.movieData.original_title, poster:this.props.movieData.poster_path})
     }
 
     starSymbol(rating){
@@ -96,7 +100,7 @@ class MovieInfoContainer extends React.Component {
             <div className="movieInfoContainer">
 
               <Col xs={12} md={4}>
-                <p className="movieTitle">{!this.props.movieData.original_title?'sdfss':this.props.movieData.original_title}</p>
+                <p className="movieTitle">{!this.props.movieData.original_title?'':this.props.movieData.original_title}</p>
                 <img src={'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+this.props.movieData.poster_path} alt="poster"/>
                 <div className="emptySpace"></div>
                 <p><span className="bold">Released: </span> {this.props.movieData.release_date}</p>
@@ -111,6 +115,7 @@ class MovieInfoContainer extends React.Component {
                 </p>
                 <div className="emptySpace forDesktop"></div>
                 <Button className="btn btn-default forDesktop" bsStyle="primary" bsSize="large" onClick={this.goBack}>Back</Button>
+                <Button className="btn btn-default forDesktop" bsStyle="default" bsSize="large" onClick={this.saveMovie}>Save</Button>
               </Col>
 
               <Col xs={12} md={8}>
@@ -122,6 +127,8 @@ class MovieInfoContainer extends React.Component {
 
                 <div className="emptySpace forMobile"></div>
                 <Button className="btn btn-default forMobile" bsStyle="primary" bsSize="large" onClick={this.goBack}>Back</Button>
+                <Button className="btn btn-default forMobile" bsStyle="default" bsSize="large" onClick={this.saveMovie}>Save</Button>
+
                 {review}
               </Col>
             </div>

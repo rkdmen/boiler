@@ -60,8 +60,7 @@ export function getUpcoming(page){
 }
 
 export function saveMovie(movieInfo){
-  let testing = {movie:'testingMovie', id:123}
-  const request = axios.post('/api/movie/', testing);
+  const request = axios.post('/api/movie/', movieInfo);
   return {
     type: type.SAVE_MOVIE,
     payload: request
