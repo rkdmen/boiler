@@ -3,16 +3,9 @@ import { Link } from 'react-router';
 
 const Header = () => (
     <div className="header">
-      <Link to={'/'}>
-        <div className="headerLeft">
-          <p>Now Playing</p>
-        </div>
-      </Link>
-      <Link to={'/upcoming'}>
-        <div  className="headerRight">
-          <p>Upcoming</p>
-        </div>
-      </Link>
+      <Link className="headerNowPlaying" to={'/'}>Now Playing </Link>
+      <Link className="headerUpcoming" to={'/upcoming'}> Upcoming </Link>
+      <Link className="headerSaved" to={'/saved'}>Saved </Link>
     </div>
 )
 

@@ -67,7 +67,6 @@ export function saveMovie(movieInfo){
   }
 }
 export function getSavedMovie(){
-  console.log('saved action called')
   const request = axios.get('/api/movie');
   return {
     type: type.RETRIVE_SAVED_MOVIE,

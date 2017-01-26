@@ -41,7 +41,6 @@ let user = mongoose.model('User', userSchema);
 
 
 app.get('/api/movie', (req, res) =>{
-  console.log('/api get called###')
     user.find({}).exec(function(err, result) {
       if (!err) {
         // handle result
@@ -57,9 +56,6 @@ app.get('/api/movie', (req, res) =>{
 });
 
 app.post('/api/movie', (req, res) =>{
-  console.log('/api POST called@@@');
-  console.log(req.body, ' POST CALLED');
-
   user.update(
     { $push: { savedMovie: req.body } }
   )

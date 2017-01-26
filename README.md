@@ -17,6 +17,7 @@ A user can see what movies are out in theaters, and see the details(Review, Trai
   - Webpack
 
 - Data:
+  - MongoDB
   - JSON
 
 ### How to use Application:
