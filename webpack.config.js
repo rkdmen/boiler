@@ -8,12 +8,12 @@ module.exports = {
     'webpack-hot-middleware/client?reload=true',
     './src/index.jsx'
   ],
-
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
     publicPath: '/build/'
   },
+  watch: true,
   devServer: {
     historyApiFallback:true
   },

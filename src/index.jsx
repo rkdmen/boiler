@@ -36,9 +36,9 @@ ReactDOM.render(
     <Provider store={Store}>
         <Router history={history}>
           <Route path="/" component={Main}/>
-          <Route path="/upcoming" component={MainUpcoming}/>
-          <Route path="/saved" component={SavedMovieContainer}/>
-          <Route path="/info/:id" component={MovieInfoContainer}/>
+            <Route path="/upcoming" component={MainUpcoming}/>
+            <Route path="/saved" component={SavedMovieContainer}/>
+            <Route path="/info/:id" component={MovieInfoContainer}/>
         </Router>
     </Provider>,
     document.getElementById('react-root')

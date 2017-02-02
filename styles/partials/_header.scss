@@ -30,18 +30,24 @@
     .headerNowPlaying {
         padding: 10px 20px 0px 20px;
         &:hover{
+            transition: color .4s ease-in-out;
+            -webkit-transition: color .4s ease-in-out; /* Safari */
             color:$hoverGreen;
         }
     }
     .headerUpcoming {
         padding: 10px 20px 0px 20px;
         &:hover{
+            transition:color .4s ease-in-out;
+            -webkit-transition:color .4s ease-in-out; /* Safari */
             color:$hoverGreen;
         }
     }
     .headerSaved {
         padding: 10px 20px 0px 20px;
         &:hover{
+            transition:color .4s ease-in-out;
+            -webkit-transition:color .4s ease-in-out; /* Safari */
             color:$hoverGreen;
         }
     }

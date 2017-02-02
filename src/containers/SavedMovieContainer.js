@@ -41,7 +41,7 @@ class SavedMovieContainer extends React.Component {
             <Col xs={12} md={12}>
                 <div className="nowPlayingContainer">
                 <Header />
-                {!this.state.savedList?"<div>Loading...</div>":
+                {!this.state.savedList? "<div>Loading...</div>":
                   this.state.savedList.map((movie, i)=>{
                     return (
                         <div  className="singleMovie" key={i} >

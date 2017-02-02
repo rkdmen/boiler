@@ -5,13 +5,18 @@ import { browserHistory } from 'react-router';
 import { Button, Col, Row, Grid } from 'react-bootstrap';
 import { getMovieDetail, getVideo, getReview, saveMovie, getSavedMovie } from '../actions/movieActions';
 import Header from '../components/Header';
+import { toastr } from 'react-redux-toastr';
 
+//Implement Toaster after Saved.
+//Saved should change to Delete
 
 
 class MovieInfoContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+          disableBtn:false
+        };
         this.saveMovie = this.saveMovie.bind(this);
     }
 
@@ -29,6 +34,7 @@ class MovieInfoContainer extends React.Component {
 
     saveMovie() {
       this.props.saveMovie({ movieId:this.props.params.id, title:this.props.movieData.original_title, poster:this.props.movieData.poster_path})
+      this.setState({disableBtn:true})
     }
 
     starSymbol(rating){
@@ -115,7 +121,7 @@ class MovieInfoContainer extends React.Component {
                 </p>
                 <div className="emptySpace forDesktop"></div>
                 <Button className="btn btn-default forDesktop" bsStyle="primary" bsSize="large" onClick={this.goBack}>Back</Button>
-                <Button className="btn btn-default forDesktop" bsStyle="default" bsSize="large" onClick={this.saveMovie}>Save</Button>
+                <Button className="btn btn-default forDesktop" disabled={this.state.disableBtn} bsStyle="default" bsSize="large" onClick={this.saveMovie}>Save</Button>
               </Col>
 
               <Col xs={12} md={8}>
@@ -127,7 +133,7 @@ class MovieInfoContainer extends React.Component {
 
                 <div className="emptySpace forMobile"></div>
                 <Button className="btn btn-default forMobile" bsStyle="primary" bsSize="large" onClick={this.goBack}>Back</Button>
-                <Button className="btn btn-default forMobile" bsStyle="default" bsSize="large" onClick={this.saveMovie}>Save</Button>
+                <Button className="btn btn-default forMobile" disabled={this.state.disableBtn}  bsStyle="default" bsSize="large" onClick={this.saveMovie}>Save</Button>
 
                 {review}
               </Col>
@@ -144,6 +150,8 @@ MovieInfoContainer.propTypes = {
     getMovieDetail: React.PropTypes.func,
     getVideo: React.PropTypes.func,
     getReview: React.PropTypes.func,
+    getSavedMovie: React.PropTypes.func,
+    saveMovie: React.PropTypes.func,
     movieData:React.PropTypes.object,
     params:React.PropTypes.object,
     videoData:React.PropTypes.object,
