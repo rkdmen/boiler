@@ -21,7 +21,7 @@ A user can see what movies are out in theaters, and see the details(Review, Trai
   - JSON
 
 ### How to use Application:
-Deployed Version [now-playing-movie.herokuapp.com](https://bit.ly/playingMovie/)
+Deployed Version [now-playing-movie.herokuapp.com](https://bit.ly/playingMovie)
 
 - Download Repo and
 ```js
