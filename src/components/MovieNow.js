@@ -1,14 +1,14 @@
-import React from 'react';
-import NowPlayingContainer from '../containers/NowPlayingContainer';
-import UpcomingMovieContainer from '../containers/UpcomingMovieContainer';
+import React from "react";
+import NowPlayingContainer from "../containers/NowPlayingContainer";
+import UpcomingMovieContainer from "../containers/UpcomingMovieContainer";
 
 class MovieNow extends React.Component {
-  render(){
+  render() {
     return (
-    <div>
-      <NowPlayingContainer />
-    </div>
-    )
+      <div>
+        <NowPlayingContainer />
+      </div>
+    );
   }
 }
 

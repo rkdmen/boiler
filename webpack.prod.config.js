@@ -1,17 +1,15 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: "source-map",
 
-  entry: [
-    './src/index.jsx'
-  ],
+  entry: ["./src/index.jsx"],
 
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: '/build/'
+    path: path.join(__dirname, "build"),
+    filename: "bundle.js",
+    publicPath: "/build/"
   },
 
   plugins: [
@@ -23,25 +21,21 @@ module.exports = {
       }
     }),
     new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+      "process.env": {
+        NODE_ENV: JSON.stringify("production")
       }
     })
   ],
 
   module: {
     loaders: [
-      { test: /\.jsx?$/,
-        loader: 'babel',
-        exclude: /node_modules/ },
+      { test: /\.jsx?$/, loader: "babel", exclude: /node_modules/ },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        loaders: ["style", "css", "sass"]
       },
-      { test: /\.png$/,
-        loader: 'file' },
-      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file'}
+      { test: /\.png$/, loader: "file" },
+      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: "file" }
     ]
   }
-}
+};

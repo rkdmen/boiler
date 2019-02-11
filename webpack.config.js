@@ -1,21 +1,18 @@
-var path = require('path');
-var webpack = require('webpack');
+var path = require("path");
+var webpack = require("webpack");
 
 module.exports = {
-  devtool: 'eval',
+  devtool: "eval",
 
-  entry: [
-    'webpack-hot-middleware/client?reload=true',
-    './src/index.jsx'
-  ],
+  entry: ["webpack-hot-middleware/client?reload=true", "./src/index.jsx"],
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'bundle.js',
-    publicPath: '/build/'
+    path: path.join(__dirname, "build"),
+    filename: "bundle.js",
+    publicPath: "/build/"
   },
   watch: true,
   devServer: {
-    historyApiFallback:true
+    historyApiFallback: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -24,18 +21,17 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.jsx?$/,
-        loader: 'babel',
-        include: path.join(__dirname, 'src')
+      {
+        test: /\.jsx?$/,
+        loader: "babel",
+        include: path.join(__dirname, "src")
       },
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass']
+        loaders: ["style", "css", "sass"]
       },
-      { test: /\.png$/,
-        loader: 'file' },
-      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loader: 'file'}
+      { test: /\.png$/, loader: "file" },
+      { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader: "file" }
     ]
   }
-}
+};
